@@ -9,7 +9,7 @@ set -ouex pipefail
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
-dnf5 -y copr enable abn/throttled
+# dnf5 -y copr enable abn/throttled
 dnf5 -y copr enable sneexy/python-validity
 
 dnf5 -y config-manager addrepo --from-repofile=https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
@@ -22,10 +22,10 @@ authselect enable-feature with-fingerprint
 
 dnf5 -y remove tuned tuned-ppd
 dnf5 -y install tlp tlp-rdw zcfan
-dnf5 -y install throttled
+# dnf5 -y install throttled
 
 # Disable COPRs so they don't end up enabled on the final image:
-dnf5 -y copr disable abn/throttled
+# dnf5 -y copr disable abn/throttled
 dnf5 -y copr disable sneexy/python-validity
 
 systemctl enable tlp.service
