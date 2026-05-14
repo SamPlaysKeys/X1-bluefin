@@ -9,16 +9,24 @@ set -ouex pipefail
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
-# this installs a package from fedora repos
-dnf5 install -y tmux 
+dnf5 -y copr enable abn/throttled
+dnf5 -y copr enable sneexy/python-validity
 
-# Use a COPR Example:
-#
-# dnf5 -y copr enable ublue-os/staging
-# dnf5 -y install package
+dnf5 -y config-manager addrepo --from-repofile=https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
+dnf5 -y install terra-release
+dnf5 -y install niri noctalia-shell
+dnf5 -y install fprintd-clients fprintd-clients-pam open-fprintd python3-validity fprintd fprintd-pam
+
+# Force authselect to update system PAM configuration 
+authselect enable-feature with-fingerprint --force
+
+dnf5 -y remove tuned tuned-ppd
+dnf5 -y install tlp tlp-rdw zcfan
+dnf5 -y install throttled
+
 # Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
+dnf5 -y copr disable abn/throttled
+dnf5 -y copr disable sneexy/python-validity
 
-#### Example for enabling a System Unit File
-
-systemctl enable podman.socket
+systemctl enable tlp.service
+systemctl mask systemd-rfkill.service systemd-rfkill.socket
