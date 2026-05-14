@@ -16,6 +16,7 @@ dnf5 -y config-manager addrepo --from-repofile=https://github.com/terrapkg/subat
 dnf5 -y install terra-release
 dnf5 -y install niri noctalia-shell
 dnf5 -y install fprintd-clients fprintd-clients-pam open-fprintd python3-validity fprintd fprintd-pam
+dnf5 -y install tailscale
 
 # Force authselect to update system PAM configuration 
 authselect enable-feature with-fingerprint
