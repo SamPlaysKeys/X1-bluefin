@@ -18,7 +18,7 @@ dnf5 -y install niri noctalia-shell
 dnf5 -y install fprintd-clients fprintd-clients-pam open-fprintd python3-validity fprintd fprintd-pam
 
 # Force authselect to update system PAM configuration 
-authselect enable-feature with-fingerprint --force
+authselect enable-feature with-fingerprint
 
 dnf5 -y remove tuned tuned-ppd
 dnf5 -y install tlp tlp-rdw zcfan
