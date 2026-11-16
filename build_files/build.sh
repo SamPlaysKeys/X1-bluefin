@@ -14,7 +14,6 @@ dnf5 -y copr enable sneexy/python-validity
 
 dnf5 -y install niri noctalia
 dnf5 -y install fprintd-clients fprintd-clients-pam open-fprintd python3-validity fprintd fprintd-pam
-dnf5 -y install tailscale
 
 # Force authselect to update system PAM configuration 
 authselect enable-feature with-fingerprint
