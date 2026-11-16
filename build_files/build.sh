@@ -12,9 +12,7 @@ set -ouex pipefail
 # dnf5 -y copr enable abn/throttled
 dnf5 -y copr enable sneexy/python-validity
 
-dnf5 -y config-manager addrepo --from-repofile=https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
-dnf5 -y install terra-release
-dnf5 -y install niri noctalia-shell
+dnf5 -y install niri noctalia
 dnf5 -y install fprintd-clients fprintd-clients-pam open-fprintd python3-validity fprintd fprintd-pam
 dnf5 -y install tailscale
 
