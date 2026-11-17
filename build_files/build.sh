@@ -9,6 +9,16 @@ set -ouex pipefail
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
+# The upstream bluefin:stable base image preinstalls Tailscale from the stable
+# channel. Repoint its repo file to the unstable channel and upgrade the package
+# so the built image ships Tailscale unstable instead.
+sed -i \
+    -e 's|\[tailscale-stable\]|[tailscale-unstable]|' \
+    -e 's|name=Tailscale stable|name=Tailscale unstable|' \
+    -e 's|pkgs.tailscale.com/stable|pkgs.tailscale.com/unstable|g' \
+    /etc/yum.repos.d/tailscale.repo
+dnf5 -y --enablerepo=tailscale-unstable upgrade tailscale
+
 # dnf5 -y copr enable abn/throttled
 dnf5 -y copr enable sneexy/python-validity
 
