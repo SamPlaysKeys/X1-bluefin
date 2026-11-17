@@ -1,3 +1,17 @@
+# X1 Bluefin
+
+This is my personal custom spin of [Bluefin](https://projectbluefin.io/), the immutable Fedora-based desktop from [Universal Blue](https://universal-blue.org/). It is based on the Universal Blue [image template](https://github.com/ublue-os/image-template) with my own package and configuration changes on top.
+
+For authoritative documentation about the base project, see:
+
+- [Bluefin documentation](https://docs.projectbluefin.io/)
+- [Universal Blue](https://universal-blue.org/)
+- [bootc documentation](https://bootc-dev.github.io/bootc/)
+
+The remainder of this README is the upstream template documentation, kept for reference.
+
+---
+
 # image-template
 
 This repository is meant to be a template for building your own custom [bootc](https://github.com/bootc-dev/bootc) image. This template is the recommended way to make customizations to any image published by the Universal Blue Project.
